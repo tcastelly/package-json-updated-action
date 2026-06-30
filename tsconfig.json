@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "strictFunctionTypes": false,
+    "strictPropertyInitialization":  false,
+    "noImplicitAny": true,
+    "experimentalDecorators": true,
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "outDir": "./dist",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    },
+  },
+  "include": [
+    "index.ts"
+  ],
+  "exclude": [
+    "dist",
+    "node_modules",
+  ]
+}

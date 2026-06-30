@@ -2,8 +2,13 @@
   "name": "package-json-updated-action",
   "version": "1.0.1",
   "description": "A GitHub Action which indicates when the package.json version has updated in the most recent commit",
-  "main": "index.js",
-  "scripts": {},
+  "main": "./dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build:tsc": "tsc",
+    "build:ncc": "ncc build ./dist/index.js -o dist_ncc",
+    "build": "npm run build:tsc && npm run build:ncc"
+  },
   "keywords": [
     "GitHub-Action",
     "package.json",
@@ -13,7 +18,12 @@
   "author": "Monty Dawson <hello@montydawson.co.uk>",
   "license": "MIT",
   "dependencies": {
-    "@actions/core": "^1.2.6",
-    "@actions/github": "^2.0.0"
+    "@actions/core": "^3.0.1",
+    "@actions/github": "^9.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^26.0.1",
+    "@vercel/ncc": "^0.44.1",
+    "typescript": "^6.0.3"
   }
 }
