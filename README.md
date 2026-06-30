@@ -25,7 +25,7 @@ jobs:
   run-build-if-needed:
     runs-on: ubuntu-latest
     steps:
-    - uses: MontyD/package-json-updated-action
+    - uses: tcastelly/package-json-updated-action
       id: version-updated
       with:
         path: package.json
