@@ -5,9 +5,12 @@ import { GitHub } from '@actions/github/lib/utils';
 type Octokit = InstanceType<typeof GitHub>;
 
 const getPackageJson = async (ref: string, octokit: Octokit) => {
+  const rawPath =  process.env['INPUT_PATH'] || 'package.json';
+  const path = rawPath.replace(/^\.\//, ''); // Strips a leading ./ if it exists
+
   const packageJSON = (await octokit.rest.repos.getContent({
     ...context.repo,
-    path: process.env['INPUT_PATH'] || 'package.json',
+    path,
     ref,
   }));
 

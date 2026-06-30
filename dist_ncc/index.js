@@ -36396,9 +36396,11 @@ function getOctokit(token, options, ...additionalPlugins) {
 
 
 const getPackageJson = async (ref, octokit) => {
+    const rawPath = process.env['INPUT_PATH'] || 'package.json';
+    const path = rawPath.replace(/^\.\//, ''); // Strips a leading ./ if it exists
     const packageJSON = (await octokit.rest.repos.getContent({
         ...github_context.repo,
-        path: process.env['INPUT_PATH'] || 'package.json',
+        path,
         ref,
     }));
     const packageJSONData = packageJSON.data;
